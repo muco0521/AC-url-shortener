@@ -1,11 +1,13 @@
 const express = require('express')
+const exphbs = require('express-handlebars')
+const routes = require('./routes')
 
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('This is url shortener')
-})
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
+app.set('view engine', 'hbs')
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost.${port}`)
