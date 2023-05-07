@@ -17,8 +17,18 @@ router.post('/', (req, res) => {
   if (validateUrl(originalUrl) === false) {
     return res.render('index', { warning: 'warning' })
   }
+  //check the same url
+  Url.findOne({ originalUrl })
+    .lean()
+    .then((url) => {
+      if (url) { return res.render('index', { shortUrl: url.shortUrl })}
 
-  return res.render('index', { shortUrl })
+      return Url.create({ originalUrl, shortUrl })
+        .then(() => res.render('index', { shortUrl }))
+      
+    })
+    .catch((error) => console.log(error))
 })
 
 module.exports = router
+
