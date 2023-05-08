@@ -9,6 +9,17 @@ router.get('/', (req, res) => {
   return res.render('index')
 })
 
+//connect to shortUrl
+router.get("/:path", (req, res) => {
+  const path = req.params.path;
+  const shortUrl = SERVER + path
+  Url.findOne({ shortUrl })
+    .lean()
+    .then((url) => res.redirect(url.originalUrl))
+    .catch((error) => console.log(error));
+})
+
+
 router.post('/', (req, res) => {
   const originalUrl = req.body.originalUrl.trim()
   const shortUrl = SERVER + shortCode()
