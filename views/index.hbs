@@ -1,5 +1,4 @@
-<form class="container d-flex align-items-center justify-content-center" style="height: 100vh;" action="/"
-  method="POST">
+<div id="container" class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
   <div class="card shadow rounded-4" style="width: 46rem; height: 32rem;">
     <div class="mx-auto">
       <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
@@ -10,7 +9,7 @@
       <div class="d-flex justify-content-start align-items-center mt-3">
         {{#if shortUrl }}
         <span class="mx-3 p-1 bg-info flex-fill rounded">
-          <h4 class="card-title mx-2 text-light" style="text-align: center;">Success!</h4>
+          <h4 id="card-title" class="card-title mx-2 text-light" style="text-align: center;">Success!</h4>
         </span>
         {{else }}
 
@@ -29,18 +28,18 @@
 
       {{#if shortUrl }}
       <div class="d-flex justify-content-start align-items-center mt-4 mx-3">
-        <input class="card-text flex-fill me-3 py-2" value="{{ shortUrl }}"></input>
-        <button type="submit" class="btn btn-secondary btn-lg ms-auto">Copy</button>
+        <input id="short-url-input" class="card-text flex-fill me-3 py-2" value="{{ shortUrl }}"></input>
+        <button type="click" class="btn btn-outline-secondary btn-lg ms-auto copy-btn"><i class="far fa-clone copy-btn"></i></button>
         <a href="/" class="btn btn-warning btn-lg ms-2">Back</a>
       </div>
       {{else }}
-      <div class="d-flex justify-content-start align-items-center mt-4 mx-3">
+      <form class="d-flex justify-content-start align-items-center mt-4 mx-3" action="/" method="POST">
         <input class="card-text flex-fill me-3 py-2" name="originalUrl" placeholder=" Paste the URL to be shortened"
           required></input>
         <button type="submit" class="btn btn-warning btn-lg ms-auto">Submit</button>
-      </div>
+      </form>
       {{/if}}
 
     </div>
   </div>
-</form>
+</div>
