@@ -6,10 +6,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 mongoose.connect(process.env.MONGODB_URI)
 
-
 const db = mongoose.connection
 
-db.on('error', () => {
+db.on('error', (error) => {
   console.log(error)
 })
 

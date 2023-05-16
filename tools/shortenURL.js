@@ -1,4 +1,4 @@
-function generateShortCode() {
+function generateShortCode () {
   const lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperLetters = lowerLetters.toUpperCase()
   const numbers = '1234567890'
@@ -7,8 +7,8 @@ function generateShortCode() {
 
   let shortCode = ''
 
-  for (i = 0; i < codeLength; i++) {
-    let index = Math.floor(Math.random() * baseChar.length)
+  for (let i = 0; i < codeLength; i++) {
+    const index = Math.floor(Math.random() * baseChar.length)
 
     shortCode += baseChar.charAt(index)
   }

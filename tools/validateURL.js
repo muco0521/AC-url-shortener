@@ -1,6 +1,6 @@
 const URL = require('url').URL
 
-function validateUrl(urlString) {
+function validateUrl (urlString) {
   try {
     new URL(urlString)
     return true
